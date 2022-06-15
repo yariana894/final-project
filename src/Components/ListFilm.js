@@ -4,10 +4,13 @@ import {collection, deleteDoc, doc, getDocs, query, where} from "@firebase/fires
 import swal from "sweetalert2";
 import Swal from "sweetalert2";
 import {getAuth} from "firebase/auth";
+import {useNavigate} from "react-router-dom";
 
 function ListFilm() {
     const [films, setFilms] = useState([]);
     const [usuario, setUsuario] = useState('');
+
+    const navigate = useNavigate()
 
     useEffect(() => {
 
@@ -15,13 +18,30 @@ function ListFilm() {
     }, [usuario])
 
     let handleUsuario = async () => {
-        const auth = await getAuth();
-        console.log("usuario", auth.currentUser.uid)
-        console.log("email", auth.currentUser.email)
-        const user = auth.currentUser.uid
-        setUsuario(user)
 
-        return usuario
+        try {
+            const auth = await getAuth();
+            console.log("usuario", auth.currentUser.uid)
+            console.log("email", auth.currentUser.email)
+            const user = auth.currentUser.uid
+            setUsuario(user)
+
+            return usuario
+        } catch (e) {
+            await swal.fire({
+                title: 'Necesitas loguearte o registrarte.',
+                icon: 'info',
+                width: 600,
+                padding: '3em',
+                color: '#716add',
+                background: '#fff url(https://sweetalert2.github.io/#examplesimages/trees.png)',
+                backdrop: `rgba(0,0,123,0.4)
+                                 url("https://sweetalert2.github.io/#examplesimages/nyan-cat.gif") 
+                                left top
+                                no-repeat`
+            })
+            navigate("/login")
+        }
     }
 
     let handleArray = async () => {

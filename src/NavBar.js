@@ -1,5 +1,9 @@
 function NavBar() {
 
+    const logout = () =>{
+        logout()
+    }
+
     return <nav className="navbar navbar-dark bg-dark navbar-expand-lg navbar-light ">
         <a className="navbar-brand" href="http://localhost:3000/">Peliculas</a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
@@ -12,13 +16,25 @@ function NavBar() {
                     <a className="nav-link text-shadow text-orange-500" href="http://localhost:3000/saveFilms">Guardadas<span
                         className="sr-only">(current)</span></a>
                 </li>
+
+                <li className="nav-item active">
+                    <a className="nav-link text-shadow text-orange-500"
+                       href="http://localhost:3000/ranking">Películas<span
+                        className="sr-only">(current)</span></a>
+                </li>
+
+                <li className="nav-item active">
+                    <a className="nav-link text-shadow text-orange-500" href="http://localhost:3000/rankingTV">TV<span
+                        className="sr-only">(current)</span></a>
+                </li>
             </ul>
 
             <a className="nav-link"
                href="http://localhost:3000/login">Login <span className="sr-only">(current)</span>
             </a>
 
-            <a className="nav-link" href="http://localhost:3000/">Logout <span className="sr-only">(current)</span>
+            <a className="nav-link" href="http://localhost:3000/" onClick={logout}>Logout<span
+                className="sr-only">(current)</span>
             </a>
         </div>
     </nav>

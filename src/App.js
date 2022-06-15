@@ -8,6 +8,8 @@ import ListFilm from "./Components/ListFilm";
 import {AuthProvider} from './Context/authContext'
 import Footer from "./Footer";
 import React from "react";
+import Ranking from "./Components/Ranking";
+import RankingTV from "./Components/RankingTV";
 
 function App() {
     return (
@@ -20,6 +22,8 @@ function App() {
                         <Route path="login" element={<Login/>}/>
                         <Route path="register" element={<Register/>}/>
                         <Route path="saveFilms" element={<ListFilm/>}/>
+                        <Route path="ranking" element={<Ranking/>}/>
+                        <Route path="rankingTV" element={<RankingTV/>}/>
                     </Routes>
                 </main>
                 <Footer/>

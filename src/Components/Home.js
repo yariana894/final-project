@@ -16,6 +16,8 @@ function Home() {
         {label: "Series", value: "series"}
     ]
 
+    console.log(auth.currentUser)
+
     useEffect(() => {
 
         setResults(data.length)
@@ -24,8 +26,6 @@ function Home() {
 
     let handleSubmit = async e => {
         e.preventDefault()
-        console.log("usuario", auth.currentUser.uid)
-
 
         async function callAPI() {
 
@@ -76,6 +76,7 @@ function Home() {
 
                 if (querySnapshot.docs.length === 0) {
                     console.log("No está guardada en tu lista")
+
                     await addDoc(collection(db, usuario), {titulo, anho, tipo, imagen})
                     await swal.fire({
                         position: 'center',
@@ -222,69 +223,8 @@ function Home() {
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
-
-
-            {/*<div id="myCarousel" className="carousel slide align-items-center " data-ride="carousel">
-                <ol className="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" className="active"/>
-                    <li data-target="#myCarousel" data-slide-to="1"/>
-                    <li data-target="#myCarousel" data-slide-to="2"/>
-                </ol>
-                <div className="carousel-inner">
-                    <div className="carousel-item active m-0">
-                        <img className="first-slide"
-                             src="https://s1.eestatic.com/2017/01/27/actualidad/actualidad_189245206_129755622_1706x960.jpg"
-                             alt="First slide"/>
-                        <div className="container">
-                            <div className="carousel-caption text-left">
-                                <h1>Guarda</h1>
-                                <p>Podrás guardar tus películas en una lista personalizada</p>
-                                <p><a className="btn btn-lg btn-primary" href="http://localhost:3000/saveFilms"
-                                      role="button">Ir a películas guardadas</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="carousel-item w-100">
-                        <img className="second-slide"
-                             src="https://media.gq.com.mx/photos/611170a3e5749b2d5a47bf26/16:9/w_2560%2Cc_limit/pan's%2520labrynth.jpg"
-                             alt="Second slide"/>
-                        <div className="container">
-                            <div className="carousel-caption">
-                                <h1>Busca</h1>
-                                <p>Aquí podrás buscar fácilmente dónde tus películas y Series.</p>
-                                <p><a className="btn btn-lg btn-primary" href="#" role="button">Ir al Buscador</a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="carousel-item">
-                        <img className="third-slide"
-                             src="https://imagenes.elpais.com/resizer/c222sh89e2kpFZETxd208IGztAw=/1960x1103/cloudfront-eu-central-1.images.arcpublishing.com/prisa/Z7OXACA63JB57PNTW4S4BFJQCQ.jpg"
-                             alt="Third slide"/>
-                        <div className="container">
-                            <div className="carousel-caption text-right">
-                                <h1>Regístrate</h1>
-                                <p>Guarda tus películas favoritas</p>
-                                <p><a className="btn btn-lg btn-primary" href="http://localhost:3000/register"
-                                      role="button">Registrarse</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <a className="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-                    <span className="carousel-control-prev-icon" aria-hidden="true"/>
-                    <span className="sr-only">Previous</span>
-                </a>
-                <a className="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-                    <span className="carousel-control-next-icon" aria-hidden="true"/>
-                    <span className="sr-only">Next</span>
-                </a>
-            </div>*/}
         </div>
     </div>
 }
