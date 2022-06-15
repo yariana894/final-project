@@ -1,38 +1,269 @@
-.App {
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.card{
+    transition: transform 0.3s ease-in-out;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.card:hover {
+    transform: translateY(-0.5rem);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.formulario{
+    width: 300px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.imagen-carousel{
+    height: 250px;
 }
 
-.App-link {
-  color: #61dafb;
+.fondo{
+    width: 2500px;
+    height: 800px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.carousel-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.icon-cards {
+    position: relative;
+    width: 60vw;
+    height: 40vw;
+    display: flex;
+    align-items: center;
+    max-width: 380px;
+    max-height: 250px;
+    margin: 0;
+    padding: 0;
+    color: white;
+    perspective: 1000px;
+    transform-origin: center;
+}
+
+.icon-cards__content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transform: translateZ(-30vw) rotateY(0);
+    -webkit-animation: carousel 10s infinite cubic-bezier(0.77, 0, 0.175, 1) forwards;
+    animation: carousel 10s infinite cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+.icon-cards__content.step-animation {
+    -webkit-animation: carousel 8s infinite steps(1) forwards;
+    animation: carousel 8s infinite steps(1) forwards;
+}
+
+.icon-cards__item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 60vw;
+    height: 40vw;
+    max-width: 380px;
+    max-height: 250px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    transform-origin: center;
+}
+
+.icon-cards__item:nth-child(1) {
+    background: #fdd94f;
+    transform: rotateY(0) translateZ(35vw);
+}
+
+.icon-cards__item:nth-child(2) {
+    background: #f87949;
+    transform: rotateY(120deg) translateZ(35vw);
+}
+
+.icon-cards__item:nth-child(3) {
+    background: #fbab48;
+    transform: rotateY(240deg) translateZ(35vw);
+}
+
+@-webkit-keyframes carousel {
+    0%, 17.5% {
+        transform: translateZ(-35vw) rotateY(0);
+    }
+    27.5%, 45% {
+        transform: translateZ(-35vw) rotateY(-120deg);
+    }
+    55%, 72.5% {
+        transform: translateZ(-35vw) rotateY(-240deg);
+    }
+    82.5%, 100% {
+        transform: translateZ(-35vw) rotateY(-360deg);
+    }
+}
+
+@keyframes carousel {
+    0%, 17.5% {
+        transform: translateZ(-35vw) rotateY(0);
+    }
+    27.5%, 45% {
+        transform: translateZ(-35vw) rotateY(-120deg);
+    }
+    55%, 72.5% {
+        transform: translateZ(-35vw) rotateY(-240deg);
+    }
+    82.5%, 100% {
+        transform: translateZ(-35vw) rotateY(-360deg);
+    }
+}
+
+
+@-webkit-keyframes jelly {
+    from {
+        transform: scale(1, 1);
+    }
+    30% {
+        transform: scale(1.25, 0.75);
+    }
+    40% {
+        transform: scale(0.75, 1.25);
+    }
+    50% {
+        transform: scale(1.15, 0.85);
+    }
+    65% {
+        transform: scale(0.95, 1.05);
+    }
+    75% {
+        transform: scale(1.05, 0.95);
+    }
+    to {
+        transform: scale(1, 1);
+    }
+}
+
+@keyframes jelly {
+    from {
+        transform: scale(1, 1);
+    }
+    30% {
+        transform: scale(1.25, 0.75);
+    }
+    40% {
+        transform: scale(0.75, 1.25);
+    }
+    50% {
+        transform: scale(1.15, 0.85);
+    }
+    65% {
+        transform: scale(0.95, 1.05);
+    }
+    75% {
+        transform: scale(1.05, 0.95);
+    }
+    to {
+        transform: scale(1, 1);
+    }
+}
+
+
+.text-shadow {
+    text-shadow: 2px 2px #000;
+    color: orange;
+}
+
+.h {
+    min-height: 1000px;
+}
+
+.col.m {
+    margin: 10px;
+    padding: 0;
+}
+
+.boton {
+    flex: 1 1 auto;
+    margin: 10px;
+    padding: 20px 30px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    letter-spacing: 2px;
+    /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 16px 38px -12px rgba(125, 125, 125, 0.56), 0 4px 25px 0 rgba(125, 125, 125, 0.2), 0 8px 10px -5px rgba(125, 125, 125, 0.2);
+    font-weight: 500;
+}
+
+.boton:hover {
+    background-position: top center; /* change the direction of the change here */
+    box-shadow: none;
+    letter-spacing: 1px;
+}
+
+.btn-1 {
+    background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
+}
+
+.btn-2 {
+    background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
+}
+
+.btn-3 {
+    background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%);
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+
+.parrafo {
+    text-transform: uppercase;
+    letter-spacing: .5em;
+    display: inline-block;
+    /*border: 4px double rgba(255, 255, 255, .25);*/
+
+    padding: 1.5em 0;
+    /*   top: 18%;
+       left: 50%;*/
+    width: 40em;
+}
+
+.parrafo span {
+    font: 700 4em/1 "Oswald", sans-serif;
+    letter-spacing: 0;
+    padding: .25em 0 .325em;
+    display: block;
+    margin: 0 auto;
+    text-shadow: 0 0 80px rgba(255, 255, 255, .5);
+
+    /* Clip Background Image */
+
+    background: url("https://static.vecteezy.com/system/resources/previews/002/176/076/non_2x/realistic-yellow-orange-watercolor-panoramic-texture-on-a-white-background-vector.jpg") repeat-y;
+    -webkit-background-clip: text;
+    /*background-clip: text;*/
+
+    /* Animate Background Image */
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: aitf 80s linear infinite;
+
+    /* Activate hardware acceleration for smoother animations */
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+}
+
+/* Animate Background Image */
+@-webkit-keyframes aitf {
+    0% {
+        background-position: 0 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
